@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creative Reflection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --aolcc-orange: #EA7024;
       --aolcc-green: #68B543;
       --text: #333333;
-      --muted: #555555;
-      --border: #d9d9d9;
-      --panel: #f7f7f7;
+      --panel: #f3f3f3;
       --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.06);
+      --border: #d6d6d6;
+      --shadow: rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -23,74 +25,90 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: #f3f3f3;
+      background: #ffffff;
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      padding: 10px;
+      padding: 0;
     }
 
     .activity-wrap {
       width: 100%;
-      max-width: 940px;
+      max-width: 1180px;
       margin: 0 auto;
+      padding: 0 6px 12px;
+      background: #ffffff;
     }
 
     .title {
-      margin: 2px 0 8px;
-      font-size: 31px;
-      line-height: 1.1;
+      margin: 0;
+      padding: 10px 0 28px 4px;
+      font-family: "Raleway", Arial, Helvetica, sans-serif;
+      font-size: 14pt;
+      line-height: 1.15;
       font-weight: 700;
       color: var(--aolcc-orange);
     }
 
+    .content-panel {
+      background: #ffffff;
+      padding: 0 0 10px;
+    }
+
     .intro {
-      margin: 0 0 16px;
+      margin: 0 0 18px;
       font-size: 15px;
       line-height: 1.45;
       color: #2f2f2f;
-      max-width: 900px;
+      max-width: 1060px;
+      padding: 0 52px;
+    }
+
+    .title-block {
+      padding: 18px 52px 8px;
     }
 
     .card {
-      background: #fafafa;
-      border: 1px solid #d7d7d7;
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 2px;
-      padding: 18px 14px 14px;
-      box-shadow: 0 1px 2px var(--shadow);
+      margin: 0 52px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     .question {
-      margin: 0 0 10px;
+      margin: 0 0 14px;
       font-size: 14px;
       line-height: 1.45;
       color: #3a3a3a;
+      max-width: 100%;
     }
 
     .reflection-box {
       width: 100%;
-      min-height: 232px;
+      min-height: 260px;
       resize: vertical;
       display: block;
-      padding: 14px;
+      padding: 16px;
       font-size: 15px;
       line-height: 1.5;
       color: var(--text);
       background: var(--white);
-      border: 1px solid #cfcfcf;
-      border-radius: 2px;
+      border: 1px solid #cdcdcd;
+      border-radius: 1px;
       outline: none;
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
     }
 
     .reflection-box::placeholder {
-      color: #8f8f8f;
+      color: #8c8c8c;
     }
 
     .reflection-box:focus {
-      border-color: #bcbcbc;
+      border-color: #bdbdbd;
       box-shadow: 0 0 0 2px rgba(234, 112, 36, 0.12);
     }
 
@@ -98,24 +116,24 @@
       margin-top: 16px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
     .submit-btn {
       appearance: none;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       background: var(--aolcc-green);
       color: #ffffff;
-      padding: 11px 18px;
-      min-width: 78px;
+      padding: 12px 20px;
+      min-width: 80px;
       font-size: 14px;
       font-weight: 700;
       line-height: 1;
       cursor: pointer;
-      transition: background-color 0.22s ease, transform 0.12s ease, box-shadow 0.22s ease;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 1px 2px var(--shadow);
+      transition: background-color 0.22s ease, transform 0.12s ease;
     }
 
     .submit-btn:hover {
@@ -134,7 +152,7 @@
     .status {
       min-height: 22px;
       font-size: 14px;
-      color: #2f6f1f;
+      color: #4f7f33;
       opacity: 0;
       transform: translateY(4px);
       transition: opacity 0.45s ease, transform 0.45s ease;
@@ -146,73 +164,88 @@
       transform: translateY(0);
     }
 
-    .progress-bar {
-      margin-top: 14px;
-      height: 10px;
-      width: 100%;
-      border-top: 1px solid #d6d6d6;
-      background:
-        linear-gradient(to right,
-          #a7cf3a 0%,
-          #a7cf3a 33.33%,
-          #f06b12 33.33%,
-          #f06b12 66.66%,
-          #9ee3ef 66.66%,
-          #9ee3ef 100%);
+    .progress-wrap {
+      margin: 16px 52px 0;
     }
 
-    @media (max-width: 640px) {
-      .title {
-        font-size: 28px;
+    .progress-bar {
+      height: 11px;
+      width: 100%;
+      background:
+        linear-gradient(to right,
+          #a8cf33 0%,
+          #a8cf33 33.33%,
+          #ef640f 33.33%,
+          #ef640f 66.66%,
+          #9fdfea 66.66%,
+          #9fdfea 100%);
+    }
+
+    @media (max-width: 768px) {
+      .title-block,
+      .intro,
+      .card,
+      .progress-wrap {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding-left: 0;
+        padding-right: 0;
       }
 
-      .intro {
-        font-size: 14px;
+      .title {
+        padding-left: 0;
+        font-size: 14pt;
       }
 
       .card {
-        padding: 14px 12px 12px;
+        padding: 14px;
       }
 
       .reflection-box {
-        min-height: 210px;
+        min-height: 220px;
       }
     }
   </style>
 </head>
 <body>
   <main class="activity-wrap">
-    <h1 class="title">Creative Reflection</h1>
+    <div class="content-panel">
+      <div class="title-block">
+        <h1 class="title">Creative Reflection</h1>
+      </div>
 
-    <p class="intro">
-      Take this space to reflect on the lessons you’ve learned and connect them to your own understanding.
-      This is an ungraded activity, and your responses will not be saved. If you’d like to keep a record,
-      please copy and paste your answers into your personal drive.
-    </p>
-
-    <section class="card" aria-labelledby="reflection-question">
-      <p class="question" id="reflection-question">
-        Look closely at your everyday environment (social media, packaging, ads). Which art or design movements do you notice emerging?
-        Identify them by name and describe the visual elements that give them away.
+      <p class="intro">
+        Take this space to reflect on the lessons you’ve learned and connect them to your own understanding.
+        This is an ungraded activity, and your responses will not be saved. If you’d like to keep a record,
+        please copy and paste your answers into your personal drive.
       </p>
 
-      <form id="reflectionForm" novalidate>
-        <label for="reflectionInput" class="sr-only" style="position:absolute;left:-9999px;">Type your reflection here</label>
-        <textarea
-          id="reflectionInput"
-          class="reflection-box"
-          placeholder="Type your reflection here..."
-          aria-label="Creative reflection response"
-        ></textarea>
+      <section class="card" aria-labelledby="reflection-question">
+        <p class="question" id="reflection-question">
+          Look closely at your everyday environment (social media, packaging, ads). Which art or design movements do you notice emerging?
+          Identify them by name and describe the visual elements that give them away.
+        </p>
 
-        <div class="actions">
-          <button type="submit" class="submit-btn">Submit</button>
-          <div id="submitMessage" class="status" aria-live="polite">Reflection submitted.</div>
-        </div>
-      </form>
-    </section>
+        <form id="reflectionForm" novalidate>
+          <label for="reflectionInput" style="position:absolute;left:-9999px;">Type your reflection here</label>
+          <textarea
+            id="reflectionInput"
+            class="reflection-box"
+            placeholder="Type your reflection here..."
+            aria-label="Creative reflection response"
+          ></textarea>
 
-    <div class="progress-bar" aria-hidden="true"></div>
+          <div class="actions">
+            <button type="submit" class="submit-btn">Submit</button>
+            <div id="submitMessage" class="status" aria-live="polite">Reflection submitted.</div>
+          </div>
+        </form>
+      </section>
+
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
   </main>
 
   <script>
@@ -237,7 +270,7 @@
         }
 
         message.textContent = 'Reflection submitted.';
-        message.style.color = '#2f6f1f';
+        message.style.color = '#4f7f33';
         message.classList.remove('show');
         void message.offsetWidth;
         message.classList.add('show');
