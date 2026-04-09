@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Reflection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-green: #48A548;
+      --secondary-green: #A9CA3F;
+      --accent-orange: #EA7024;
+      --light-grey: #f5f5f7;
+      --dark-text: #1b1b1f;
+      --white: #ffffff;
+      --tri-blue: #76d5e4;
+      --border-soft: #d9d9df;
+      --success-bg: #eaf7ea;
+      --success-text: #2f6f2f;
+      --shadow-soft: 0 10px 24px rgba(27, 27, 31, 0.08);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 220ms ease;
+      --content-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--light-grey);
+      color: var(--dark-text);
+      font-family: "Lato", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    main {
+      padding: 14px 10px 0;
+    }
+
+    .page-wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px 18px 0 0;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .reflection-panel {
+      padding: 20px 20px 22px;
+    }
+
+    .reflection-heading {
+      margin: 0 0 14px;
+      font-family: "Raleway", Arial, sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      line-height: 1.25;
+    }
+
+    .reflection-copy,
+    .question-text,
+    .submitted-message,
+    .reflection-box {
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 1rem;
+    }
+
+    .reflection-copy,
+    .question-text {
+      margin: 0 0 18px;
+      color: var(--dark-text);
+    }
+
+    .question-text {
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .reflection-box {
+      width: 100%;
+      min-height: 220px;
+      resize: vertical;
+      border: 1px solid #cfd4dc;
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: #ffffff;
+      color: var(--dark-text);
+      line-height: 1.6;
+      outline: none;
+    }
+
+    .reflection-box::placeholder {
+      color: #5f6067;
+    }
+
+    .reflection-box:focus {
+      border-color: var(--primary-green);
+      box-shadow: 0 0 0 4px rgba(72, 165, 72, 0.12);
+    }
+
+    .button-row {
+      margin-top: 18px;
+    }
+
+    .submit-btn {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      background: var(--primary-green);
+      color: #ffffff;
+      font-family: "Raleway", Arial, sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      padding: 12px 24px;
+      min-height: 44px;
+      cursor: pointer;
+      transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 16px rgba(72, 165, 72, 0.22);
+    }
+
+    .submit-btn:hover,
+    .submit-btn:focus-visible {
+      background: var(--accent-orange);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(234, 112, 36, 0.24);
+      outline: none;
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submitted-message {
+      margin-top: 18px;
+      padding: 0 14px;
+      border-radius: 12px;
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid rgba(72, 165, 72, 0.25);
+      opacity: 0;
+      transform: translateY(8px);
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 320ms ease, transform 320ms ease, max-height 320ms ease, padding 320ms ease;
+    }
+
+    .submitted-message.show {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 120px;
+      padding: 12px 14px;
+    }
+
+    .bottom-tri-bar {
+      display: grid;
+      grid-template-columns: 29% 38% 33%;
+      width: 100%;
+      height: 12px;
+    }
+
+    .bottom-tri-bar span {
+      display: block;
+      height: 100%;
+    }
+
+    .bar-green {
+      background: var(--secondary-green);
+    }
+
+    .bar-orange {
+      background: var(--accent-orange);
+    }
+
+    .bar-blue {
+      background: var(--tri-blue);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 10px 8px 0;
+      }
+
+      .reflection-panel {
+        padding: 18px 16px 20px;
+      }
+
+      .reflection-box {
+        min-height: 200px;
+      }
+
+      .bottom-tri-bar {
+        height: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .reflection-heading {
+        font-size: 1.1rem;
+      }
+
+      .reflection-copy,
+      .question-text,
+      .submitted-message,
+      .reflection-box {
+        font-size: 0.98rem;
+      }
+
+      .submit-btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .submit-btn,
+      .submitted-message {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="page-wrap" aria-labelledby="reflection-heading">
+      <div class="reflection-panel">
+        <h1 id="reflection-heading" class="reflection-heading">Creative Reflection</h1>
+
+        <p class="reflection-copy">
+          Take this space to reflect on these questions and connect them to the lessons you've learned. This is an ungraded activity that will help prepare you for the final assignment in this chapter. Your responses will not be saved. If you’d like to keep a record, please copy and paste your answers into your personal drive.
+        </p>
+
+        <p class="question-text">
+          By identifying these underlying influences, the junior designer can ensure that any new work remains consistent with SAMA’s original vision and avoids introducing unrelated or conflicting styles. Do so by writing a few paragraphs to address these points until you are confident you understand the direction the previous graphic designer envisioned for SAMA. 
+        </p>
+
+        <textarea
+          id="reflection"
+          class="reflection-box"
+          aria-describedby="submission-message"
+          placeholder="type something here"
+        ></textarea>
+
+        <div class="button-row">
+          <button type="button" class="submit-btn" id="submitReflection">Submit</button>
+        </div>
+
+        <div id="submission-message" class="submitted-message" role="status" aria-live="polite">
+          Reflection submitted.
+        </div>
+      </div>
+
+      <div class="bottom-tri-bar" aria-hidden="true">
+        <span class="bar-green"></span>
+        <span class="bar-orange"></span>
+        <span class="bar-blue"></span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const submitButton = document.getElementById('submitReflection');
+      const textArea = document.getElementById('reflection');
+      const message = document.getElementById('submission-message');
+
+      submitButton.addEventListener('click', function () {
+        message.classList.remove('show');
+        void message.offsetWidth;
+        message.textContent = 'Reflection submitted.';
+        message.classList.add('show');
+      });
+
+      textArea.addEventListener('input', function () {
+        if (message.classList.contains('show')) {
+          message.classList.remove('show');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
